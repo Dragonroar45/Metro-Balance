@@ -29,3 +29,16 @@ showBal.addEventListener("click", () => {
         result.textContent = `Metro Card Balance is ${metroBal}`;
     }
 });
+
+submitBtn.addEventListener("click", () => {
+    if (localStorage.getItem("balance") === null){
+        result.textContent = "Balance not found. Please manually add Balance."
+    } else{
+        let  customFare = inputField.value;
+        inputField.value = "";
+        let metroBal = localStorage.getItem("balance");
+        metroBal -= customFare;
+        localStorage.setItem("balance", metroBal);
+        result.textContent = `Custom Fare ${customFare} deducted. New Balance is ${metroBal}`;
+    }
+})
