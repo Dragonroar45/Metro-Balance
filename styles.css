@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=SUSE:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 .main-container{
     box-sizing: border-box;
@@ -11,6 +12,32 @@
     align-items: center;
     gap: 30px
 }
+
+.logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.metro-img{
+    max-width: 45%;
+    height: auto;
+    text-align: center;
+    padding-bottom: 10px;
+    align-self: center;
+    padding-top: 20px;
+}
+
+.metro-logo{
+    padding: 10px;
+    min-width: 50;
+}
+
+/* .metro-train{
+    width: 300px;
+    text-align: center;
+} */
 
 .sub-btn{
     background-color: red;
