@@ -39,6 +39,30 @@
     text-align: center;
 } */
 
+.hero-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tracker-text{
+    font-family: "DM Sans", sans-serif;
+    font-size: 3.12rem;
+    color: #888683;
+    font-weight: 700;
+}
+
+.logo-text{
+    font-family: "DM Sans", sans-serif;
+    font-size: 3.12rem;
+    color: #bc0d12;
+    font-weight: 700;
+}
+
+.balance-text{
+    color: #424140;
+}
+
 .sub-btn{
     background-color: red;
     text-decoration: none;
