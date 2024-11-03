@@ -3,6 +3,8 @@ let showBal = document.querySelector(".show-btn");
 let inputField = document.querySelector(".input-val");
 let submitBtn = document.querySelector(".submit");
 
+let customFareButton = document.querySelector(".sub-bal");
+
 let inputBal = document.querySelector(".bal-input");
 
 let overwriteBalBtn = document.querySelector(".overwrite-bal");
@@ -13,19 +15,35 @@ let submitBal = document.querySelector(".submit-bal");
 
 let result = document.querySelector("p");
 
+document.addEventListener("DOMContentLoaded", () => {
+    let isCustomButtonEnabled = false;
+    if (localStorage.getItem("isCustomButtonEnabled") === null){       //Check if button is not in localstorage meaning user hasn't made it yet
+        localStorage.setItem("isCustomButtonEnabled", isCustomButtonEnabled);
+    } else if (localStorage.getItem("isCustomButtonEnabled") === "true"){
+        renderButton();
+    }
+})
+
+function renderButton(){
+    fromStation = localStorage.getItem("fromStation");
+    toStation = localStorage.getItem("toStation");
+    customFareButton.style.display = "inline-block";
+    subButton.textContent = `Subtract Fare From ${fromStation} to ${toStation}`;
+}
+
 const bal = 140;
 subButton.addEventListener("click", () => {
     if (localStorage.getItem("balance") === null){
         localStorage.setItem("balance", bal);
         let metroBal = localStorage.getItem("balance");
-        metroBal -= 16;
+        metroBal -= localStorage.getItem("customFare");
         localStorage.setItem("balance", metroBal);
-        result.textContent = `Fare deducted. New Balance ${metroBal}`;
+        result.textContent = `Fare ${localStorage.getItem("customFare")} deducted. New Balance ${metroBal}`;
     } else{
         let metroBal = localStorage.getItem("balance");
-        metroBal -= 16;
+        metroBal -= localStorage.getItem("customFare");
         localStorage.setItem("balance", metroBal);
-        result.textContent = `Fare deducted. New Balance ${metroBal}`;
+        result.textContent = `Fare ${localStorage.getItem("customFare")} deducted. New Balance ${metroBal}`;
     }
 });
 
@@ -47,6 +65,20 @@ submitBtn.addEventListener("click", () => {
         let metroBal = localStorage.getItem("balance");
         metroBal -= customFare;
         localStorage.setItem("balance", metroBal);
+        let userConfirm = confirm("Would you like to save this fare as a custom button?");
+        if (userConfirm === true){
+            let fromStation = prompt("From which station?", "");
+            let toStation = prompt("To which station?", "");
+            if (localStorage.getItem("customFare") === null){
+                localStorage.setItem("customFare", customFare);
+            }
+            localStorage.setItem("fromStation", fromStation);
+            localStorage.setItem("toStation", toStation);
+            localStorage.setItem("isCustomButtonEnabled", "true");
+            customFareButton.style.display = "inline-block";
+            subButton.textContent = `Subtract Fare From ${fromStation} to ${toStation}`;
+
+        }
         result.textContent = `Custom Fare ${customFare} deducted. New Balance is ${metroBal}`;
     }
 });
