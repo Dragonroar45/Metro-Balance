@@ -89,20 +89,22 @@ submitBtn.addEventListener("click", () => {
         let metroBal = localStorage.getItem("balance");
         metroBal -= customFare;
         localStorage.setItem("balance", metroBal);
-        let userConfirm = confirm("Would you like to save this fare as a custom button?");
-        if (userConfirm === true){
-            let fromStation = prompt("From which station?", "");
-            let toStation = prompt("To which station?", "");
-            if (localStorage.getItem("customFare") === null){
-                localStorage.setItem("customFare", customFare);
-            }
-            localStorage.setItem("fromStation", fromStation);
-            localStorage.setItem("toStation", toStation);
-            localStorage.setItem("isCustomButtonEnabled", "true");
-            customFareButton.style.display = "inline-block";
-            subButton.textContent = `Subtract Fare From ${fromStation} to ${toStation}`;
-            renderDeleteButton();
+        if (localStorage.getItem("isCustomButtonEnabled") === "false"){
+            let userConfirm = confirm("Would you like to save this fare as a custom button?");
+            if (userConfirm === true){
+                let fromStation = prompt("From which station?", "");
+                let toStation = prompt("To which station?", "");
+                if (localStorage.getItem("customFare") === null){
+                    localStorage.setItem("customFare", customFare);
+                }
+                localStorage.setItem("fromStation", fromStation);
+                localStorage.setItem("toStation", toStation);
+                localStorage.setItem("isCustomButtonEnabled", "true");
+                customFareButton.style.display = "inline-block";
+                subButton.textContent = `Subtract Fare From ${fromStation} to ${toStation}`;
+                renderDeleteButton();
 
+            }
         }
         result.textContent = `Custom Fare ${customFare} deducted. New Balance is ${metroBal}`;
     }
