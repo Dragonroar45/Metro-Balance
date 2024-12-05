@@ -219,9 +219,37 @@ p{
     color: white;
 }
 
+.footer-class{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .footer-text{
     font-family: "Dancing Script", cursive;
+    font-size: 25px;
+    color: #2b2b2b;
 }
+
+.footer-img{
+    margin-top: 10px;
+}
+
+.footer-by{
+    font-family: "Dancing Script", cursive;
+    align-self: center;
+    font-size: 19.5px;
+}
+
+.footer-git{
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
 
 .emoji{
     font-family: "Noto Color Emoji", sans-serif;
