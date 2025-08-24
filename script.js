@@ -55,6 +55,11 @@ customDeleteBUtton.addEventListener('click', () => {
     removeDeleteButton();
 })
 
+//Transaction Info functions
+function addTransactionCustomButton(){
+    let customButtonFare = localStorage.getItem("customFare");
+}
+
 const bal = 140;
 subButton.addEventListener("click", () => {
     if (localStorage.getItem("balance") === null){
